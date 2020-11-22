@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poiret+One&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <title>Machu Cemetery</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="fake_names.js">
+    </script>
+    <script>
+      var plots = {};
+
+      /* This is just here to provide some dummy data */
+      function populateNames() {
+        for (r = 1; r <= 5; r++) {
+          for (c = 1; c <= 10; c++) {
+            for (p = 1; p <=4; p++) {
+              s = "R" + r + "C" + c + "P" + p;
+              plot = getContents(s);
+                if (!plot) {
+                   plot = getAFake();
+                   plot['location'] = s;
+                   plots[s] = plot;
+                 }
+              element = document.getElementById(plot['location']);
+              element.innerHTML = plot.name;
+            }
+          }
+        }
+      }
+
+      /* The following are the functions to display the popup boxes. right now, they get the data from a js object called plots, which I should have in a json file */
+      function getContents(plotID) {
+        var p=null;
+        if (plotID in plots) {
+          // console.log(plotID + ' was found');
+          p = plots[plotID];
+        }
+        if (p != null)
+          p['location'] = plotID;
+
+        return p;
+      }
+
+      function showId(element) {
+        var s;
+        if(!s) {
+          s=element.id;
+          var p = getContents(s);
+          var message="Full Name: " + p.name + "<br/>Birth: "+ p['birth'].toLocaleDateString("en-US") + "<br/>Death: " + p['death'].toLocaleDateString("en-US") + "<br/>In plot: " + s ;
+          var details = document.getElementById("details");
+          var plotBoundary = element.getBoundingClientRect();
+
+          details.innerHTML = message;
+          details.style.top = (  plotBoundary.top + 10) + "px";
+          details.style.left = ( plotBoundary.left + 10) + "px";
+          details.style.visibility = 'visible';
+          s = 0;
+        } else {
+          s = 0;
+          hideDetails();
+        }
+      }
+      function hideDetails() {
+        details = document.getElementById("details");
+        details.style.visibility = 'hidden';
+      }
+    </script>
+  </head>
+  <body onload="hideDetails(); populateNames()">
+    <div id="details" class="note" onclick="hideDetails()">
+        I guess I need some information here;
+    </div>
+
+    <div class="banner">
+<!--        <img alt="Image: Machu Cemetery Gate" src="" /> -->
+        <span class="banner-title">Machu Cemetery</span>
+    </div>
+    <div class="nav">
+      <div onmouseover=""><a href="index.html" >Home</a></div>
+      <div onmouseover=""><a href="history.html" >History</a></div>
+      <div onmouseover=""><a href="gallery.html" >Gallery</a></div>
+      <div onmouseover=""><a href="contact_us.html" >Contact us</a></div>
+      <div onmouseover=""><a href="support_us.html" >Support us</a></div>
+    </div>
+    <div class="content">
+      <div class="content-description">
+          <p></p>
+      </div>
+
+      <div id="plot-container" class="content-body">
+
+      </div>
+    </div>
+  </body>
+</html>

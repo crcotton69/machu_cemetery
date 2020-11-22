@@ -1,0 +1,162 @@
+body {
+  font-family: 'Poiret One', sans-serif;
+  font-size: 20px;
+  max-width: 100%;
+}
+
+p {
+  color: beige;
+}
+
+div.banner {
+  position:fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,1) url('../images/header_bg_wide.jpg');
+  background-repeat: repeat-x;
+  background-size: contain;
+  background-attachment: scroll;
+
+  border-style: solid;
+  border-color: blue;
+  border-width: 0px;
+
+  height: 150px;
+  width: 100%;
+  max-width: inherit;
+
+
+  padding-top: 30px;
+  text-align: center;
+}
+
+.banner-title {
+  font-family: 'Poiret One';
+  font-size: 80px;
+  font-weight: bolder;
+  color: beige;
+
+  padding: 10px 100px;
+
+  border-radius: 10px;
+  border-width: medium;
+  border-color: black;
+  border-style: solid;
+  border-spacing: 5px;
+
+  background-color: rgba(64,32,0,0.7);
+}
+
+.nav {
+  position: fixed;
+  top: 180px;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background: rgb(64,32,0,.7);
+}
+
+.nav > div   {
+  display: block;
+
+  margin: 10px;
+  width: 100px;
+
+  padding: 5px 10px;
+
+  color: beige;
+
+  border-style: solid;
+  border-width: 1px;
+  background-color: green;
+  border-color: black;
+
+}
+
+.nav > div a {
+  text-decoration: none;
+  color: beige;
+  font-weight: bold;
+}
+
+.content {
+  display: inline-block;
+  margin-left: 140px;
+  width: 2500px;
+  /* max-width: 100%; */
+  height: inherit;
+  /* background-color: rgba(128, 128, 128, 1); */
+}
+
+.content-description {
+  display: inline-block;
+  margin-top: 170px;
+  /* margin-left: 140px; */
+  width: 100%
+  max-width: 1200px;
+
+  padding: 10px;
+  height: auto;
+
+  background-color: rgba(64, 32, 0, .8);
+  font-weight: normal;
+  font-family: 'Raleway';
+  z-index: 0;
+}
+
+.content-description a {
+  color: beige;
+}
+
+.drive {
+  margin-left: 200px;
+}
+
+.content-body {
+  position: inherit;
+  /* margin-left: 120px; */
+
+  background-color: rgba(0, 64, 16, 1);
+
+  border-color: red;
+  border-style: dashed;
+  border-width: 3px;
+  border-top-width: 0;
+
+  width: 2000px;
+}
+
+table.plot-group {
+  margin: 10px 20px;
+  border-color: black;
+  border-width: thin;
+  border-style: solid;
+  background-color: rgba(64,32,0,1);
+  border-spacing: 10px;
+  height: 300px;
+}
+
+.plot {
+  background-color: rgb(128,128,128);
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+div.note {
+  visibility:visible;
+
+  position: fixed;
+  background-color: rgb(64,32,0,1);
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 10px;
+
+  border-color: beige;
+  border-radius: 10px;
+  border-width: thin;
+  border-style: solid;
+  font-size: 1em;
+  color: beige;
+}

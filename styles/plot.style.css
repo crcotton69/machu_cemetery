@@ -1,0 +1,177 @@
+
+div.note {
+  visibility:visible;
+
+  position: fixed;
+  background-color: rgb(64,32,0,1);
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 10px;
+
+  border-color: beige;
+  border-radius: 10px;
+  border-width: thin;
+  border-style: solid;
+  font-size: 1em;
+  color: beige;
+
+  /* z-index=-100; */
+}
+
+.contents {
+  background-color: beige;
+  border: 2px solid black;
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.description {
+  color: orange;
+
+  background-color: rgb(64,32,0);
+
+  /* width: 250px; */
+  height: auto;
+  width: 80vw;
+}
+
+.description a {
+  color: orange;
+  text-decoration: none;
+}
+
+
+#road {
+  background-color: lavender;
+
+  font-weight: bold;
+
+  width: 90vw;
+  height: 80px;
+}
+
+#CR348_Name {
+  color: gray;
+  position: relative;
+  left: 30%;
+  top: 2em;
+}
+
+#gate {
+  background-color: orange;
+  height: auto;
+  width: 5em;
+
+  position: relative;
+  right: -80vw;
+  top: 60%;
+
+  align-content: center;
+}
+
+.yard {
+  display: grid;
+  grid-template-columns: 80vw 20vw;
+
+}
+
+#the-drive {
+  background-color: rgb(128,64,16);
+  width: 5em;
+  height: 120vh;
+  grid-row: 1/3;
+  grid-column: 2/3;
+}
+
+#the-plots {
+  /* background: #003200; */
+  background: #203200;
+  color: black;
+  /* font-weight: bold; */
+
+  width: 80vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items; */
+}
+
+.plot-row {
+  background: #203200;
+  color: black;
+  /* font-weight: bold; */
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+
+  min-height: 3em;
+  margin-bottom: 10px;
+
+}
+.plot-group {
+  background: rgb(64,32,0);
+  color: black;
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  padding: 0px 4px;
+  /* margin: 5px; */
+  border-radius: 5px;
+  border: 1px solid black;
+
+  min-width: 100px;
+  /* min-height: 1em; */
+
+  font-family: sans-serif;
+}
+
+.plot-left {
+  position: relative;
+  left: 0;
+  background-color: #58462e;
+  color: beige;
+  border-radius: 5px;
+  justify-content: flex-start;
+  width: 90%;
+
+  text-align: left;
+}
+
+.plot-right {
+  width: 90%;
+  position: relative;
+  left: 10%;
+  background-color: #38460e;
+  color: beige;
+  border-radius: 5px;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+#pavillion-area {
+  background-color: #203200;
+  height: 20vh;
+  width: 80vw;
+}
+
+#pavillion {
+  position: relative;
+  background-color: beige;
+  width: 10em;
+  height: 18vh;
+  left: 5vw;
+  text-align: center;
+}

@@ -12,3 +12,12 @@
 .gallery img {
   width: 100%;
 }
+
+.gallery-entry {
+  background-color: rgb(64,32,0);
+  padding: 10px;
+}
+.gallery-entry p {
+  /* color: b; */
+  /* font-weight: bold; */
+}

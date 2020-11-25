@@ -59,7 +59,7 @@
           <div onmouseover=""><a href="history.html" >History</a></div>
           <div onmouseover=""><a href="gallery.html" >Gallery</a></div>
           <div onmouseover=""><a href="contact_us.html" >Contact us</a></div>
-          <div onmouseover=""><a href="support_us.html" >Support us</a></div>
+          <div onmouseover=""><a href="donations.html" >Donations</a></div>
         </div>
       </div>
       <div id="box4" class="box">

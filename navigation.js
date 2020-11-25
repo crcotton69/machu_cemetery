@@ -1,26 +1,5 @@
 var plots = {};
 
-/* This is just here to provide some dummy data */
-function populateNames() {
-  for (r = 1; r <= 10; r++) {
-    for (c = 1; c <= 5; c++) {
-      for (p = 1; p <=4; p++) {
-        s = "R" + r + "C" + c + "P" + p;
-        plot = getContents(s);
-          if (!plot) {
-             plot = getAFake();
-             plot['location'] = s;
-             plots[s] = plot;
-           }
-        element = document.getElementById(plot['location']);
-				if (!element) break;
-        element.innerHTML = plot.name;
-        element.onmouseover = function(){showId(this);};
-      }
-    }
-  }
-}
-
 /* The following are the functions to display the popup boxes. right now, they get the data from a js object called plots, which I should have in a json file */
 function getContents(plotID) {
   var p=null;
@@ -30,7 +9,6 @@ function getContents(plotID) {
   }
   if (p != null)
     p['location'] = plotID;
-
   return p;
 }
 
@@ -51,7 +29,6 @@ function showId(element) {
     s=element.id;
     var p = getContents(s);
     var message="Full Name: " + p.name + "<br/>Birth: "+ p['birth'].toLocaleDateString("en-US") + "<br/>Death: " + p['death'].toLocaleDateString("en-US") + "<br/>In plot: " + s ;
-
     var details = document.getElementById("details");
     details.innerHTML = message;
 
@@ -71,7 +48,7 @@ function showId(element) {
     } else {
       details.style.left = ( plotBoundary.left + 10) + "px";
     }
-
+    details.style.zIndex=100;
     details.style.visibility = 'visible';
     s = 0;
   }

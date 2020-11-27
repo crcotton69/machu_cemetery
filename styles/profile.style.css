@@ -1,0 +1,61 @@
+.gallery {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  justify-content: space-around;
+  /* align-content: space-around; */
+}
+
+.gallery img {
+  width: 100%;
+}
+
+.gallery-entry {
+  background-color: rgb(64,32,0);
+  padding: 10px;
+}
+.gallery-entry p {
+  /* color: b; */
+  /* font-weight: bold; */
+}
+
+ .profile {
+   background-color: rgb(62, 32, 0);
+   color: beige;
+   border-radius: 10px;
+   border: 2px solid black;
+   display: none;
+ }
+
+ .contents {
+   display: flex;
+   flex-direction: column;
+ }
+
+ #form-box input {
+   /* background-color: ; */
+   font-size: 30px;
+ }
+
+ #form-box button {
+   width: 200px;
+   font-size: 30px;
+   border-radius: 10px;
+ }
+
+ #lookup {
+   background-color: #203200;
+   height: 200px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   /* max-width: 100px; */
+   justify-content: space-around;
+ }
+
+ .dbox label {
+   color: orange;
+ }

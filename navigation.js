@@ -1,4 +1,4 @@
-var plots = {};
+var plots = d; // Change the name of "d" to profileData.
 
 /* The following are the functions to display the popup boxes. right now, they get the data from a js object called plots, which I should have in a json file */
 function getContents(plotID) {
@@ -8,7 +8,7 @@ function getContents(plotID) {
     p = plots[plotID];
   }
   if (p != null)
-    p['location'] = plotID;
+    p['plotId'] = plotID;
   return p;
 }
 
@@ -28,7 +28,7 @@ function showId(element) {
   if(!s) {
     s=element.id;
     var p = getContents(s);
-    var message="Full Name: " + p.name + "<br/>Birth: "+ p['birth'].toLocaleDateString("en-US") + "<br/>Death: " + p['death'].toLocaleDateString("en-US") + "<br/>In plot: " + s ;
+    var message="Full Name: " + p.name + "<br/>Birth: "+ p['birth'] + "<br/>Death: " + p['death'] + "<br/>In plot: " + s ;
     var details = document.getElementById("details");
     details.innerHTML = message;
 

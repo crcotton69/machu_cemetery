@@ -20,52 +20,10 @@
     <title>Machu Cemetery</title>
     <link rel="stylesheet" href="styles/main.style.css">
     <link rel="stylesheet" href="styles/profile.style.css">
-    <style>
-       .gallery {
-      	  display: grid;
-      	}
-
-      	.profile {
-      	  background-color: rgb(62, 32, 0);
-      	  color: beige;
-      	  border-radius: 10px;
-          border: 2px solid black;
-          display: none;
-      	}
-
-        .contents {
-          display: flex;
-          flex-direction: column;
-        }
-
-        #form-box input {
-          /* background-color: ; */
-          font-size: 30px;
-        }
-
-        #form-box button {
-          width: 200px;
-          font-size: 30px;
-          border-radius: 10px;
-        }
-
-        #lookup {
-          background-color: #203200;
-          height: 200px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          /* max-width: 100px; */
-          justify-content: space-around;
-        }
-
-        .dbox label {
-          color: orange;
-        }
-    </style>
+    <style> /* overrides*/</style>
     <script type="text/javascript" src="fake_names.js"></script>
-    <script type="text/javascript" src="navigation.js"></script>
     <script type="text/javascript" src="profileData.js"></script>
+    <script type="text/javascript" src="navigation.js"></script>
     <script type="text/javascript" src="profiles.js"></script>
   </head>
   <body>
@@ -79,7 +37,7 @@
           <p class="description"><label>Description:</label> </p>
         </div>
         <div class="pic">
-          <img class="profile-image" src="" alt="" style="display:none; background-color: blue; height: 100px;">
+          <img class="profile-image" src="" alt="" style="display:none; background-color: inherit; height: auto;">
         </div>
     </div>
     <div class="page">

@@ -1,4 +1,4 @@
-var plots = d; // Change the name of "d" to profileData.
+var plots = profileData; // Change the name of "d" to profileData.
 
 /* The following are the functions to display the popup boxes. right now, they get the data from a js object called plots, which I should have in a json file */
 function getContents(plotID) {

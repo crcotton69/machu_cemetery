@@ -14,11 +14,19 @@ function createProfileNode(p) {
 
   np.id = x;
   dbox = np.querySelector('.dbox');
+  pic = np.querySelector('.pic');
   // dbox.querySelector(".name").innerHTML = p['name'];
   for (x in p) {
     e = dbox.querySelector("." + x);
     if (e) {
       e.innerHTML = e.innerHTML + p[x];
+    } else if (x == 'profile-image' && p[x] != "") {
+      e = pic.querySelector('.profile-image');
+      if (e) {
+        e.src = p[x];
+        e.style.display = 'block';
+        console.log("Displaying Image for " + p['name']);
+      }
     }
   }
 
@@ -35,15 +43,15 @@ function clearResults(target) {
 
 function findProfiles(name, target) {
   var patt = new RegExp(name,'i');
-  for (x in d) {
-    p = d[x];
-    match = patt.exec(p['name']);
+  for (x in profileData) {
+    profile = profileData[x];
+    match = patt.exec(profile['name']);
     if (match) {
       // console.log(name +" matchs " + p['name']);
-      np = createProfileNode(p);
-      target.appendChild(np);
-      np.style.display = "block";
-      np = null;
+      newProfileElement = createProfileNode(profile);
+      target.appendChild(newProfileElement);
+      newProfileElement.style.display = "block";
+      newProfileElement = null;
     } else {
       // console.log(p['name'] + " does not equal " + name);
       continue;

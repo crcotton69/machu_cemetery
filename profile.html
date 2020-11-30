@@ -1,18 +1,4 @@
 <!DOCTYPE html>
-<!-- <?php
-  // $myfile = fopen("profiles.csv", "r") or die("Unable to open file!");
-  $rc = 1;
-  $data = array();
-  if (($handle = fopen("profiles.csv", "r")) !== FALSE) {
-      $header = fgetcsv($handle, 1000, ",");
-      while ($header && ($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
-	  $data[$row[0]."-".$row[3]] = $row;
-          $rc++;
-      }
-      fclose($handle);
-  }
-?>
--->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -24,7 +10,7 @@
     <script type="text/javascript" src="fake_names.js"></script>
     <script type="text/javascript" src="profileData.js"></script>
     <script type="text/javascript" src="navigation.js"></script>
-    <script type="text/javascript" src="profiles.js"></script>
+    <!-- <script type="text/javascript" src="profiles.js"></script> -->
   </head>
   <body>
     <div id="profile-template" class="profile">
@@ -53,12 +39,12 @@
       </div>
       <div id="box3" class="box">
         <div class="nav">
-          <div onmouseover=""><a href="index.html" >Home</a></div>
-          <div onmouseover=""><a href="history.html" >History</a></div>
-          <div onmouseover=""><a href="gallery.html" >Gallery</a></div>
-          <div onmouseover=""><a href="contact_us.html" >Contact us</a></div>
-          <div onmouseover=""><a href="donations.html" >Donations</a></div>
-          <div onmouseover=""><a href="profile.html" >Search</a></div>
+          <div><a class="text" href="index.html" >Home</a></div>
+          <div><a class="text" href="history.html" >History</a></div>
+          <div><a class="text" href="gallery.html" >Gallery</a></div>
+          <div><a class="text" href="contact_us.html" >Contact us</a></div>
+          <div><a class="text" href="donations.html" >Donations</a></div>
+          <div><a class="text" href="profile.html" >Search</a></div>
         </div>
       </div>
       <div id="box4" class="box">
@@ -66,7 +52,7 @@
         <div id="form-box">
           <form id="lookup" method="GET" autocomplete="on" rel="search" name="Lookup">
             <label for"name"><p>Find a plot by typing a name below.</p></label>
-            <input id="name" type="text" name="name" value="" placeholder="Name" size="30" onkeyup="return refreshResults(this.value);"/>
+            <input id="name" type="text" name="name" value="" placeholder="Name" size="30" onkeyup="return refreshResults(this.value, document.getElementById('gallery'),createProfileNode);"/>
             <!-- <button onclick="findProfiles('Vlastislav Strnad', document.getElementById('gallery')); return false;">Load</button> -->
             <button onclick="clearResults(document.getElementById('gallery')); return false;">Clear Results</button>
           </form>

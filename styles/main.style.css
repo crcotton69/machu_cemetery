@@ -7,7 +7,7 @@
 body {
   font-family: 'Poiret One', sans-serif;
   font-size: 20px;
-  max-width: 100%;
+  /* max-width: 100%; */
 }
 
 p {
@@ -15,34 +15,37 @@ p {
 }
 
 .banner {
-  display:grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: relative;
+
   background: rgba(0,0,0,1) url('../images/header_bg_wider.jpg');
    /* background-repeat: repeat-x; */
   background-size: cover;
 
   text-align:  center;
   height: 100%;
+  width: 100fr;
 }
 
 .banner-title {
-  display: block;
-  position: ;
-  grid-row: 2/3;
-  grid-column: 3/8;
+  display:  block;
+  position: relative;
+  left: 20%;
+  top: 25%;
 
   font-family: 'Poiret One';
-  font-size: 60px;
+  font-size: 4vw;
   font-weight: bolder;
   color: beige;
 
   padding: 10px;
+  max-width: 50vw;
 
   border-radius: 10px;
+
   border-width: thin;
   border-color: black;
   border-style: solid;
+
   border-spacing: 5px;
 
   background-color: rgba(64,32,0,0.7);
@@ -52,7 +55,8 @@ p {
   position: relative;
   padding-top: 10px;
 
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 
   background: rgb(64,32,0,.7);
 
@@ -77,15 +81,21 @@ p {
 
 }
 
-.nav > div a {
+.nav .text {
   text-decoration: none;
   color: beige;
   font-weight: bold;
 }
 
+#search-box {
+  font-size: large;
+  color: black;
+}
+
 div.page {
   height: 100vh;
   width: 100%;
+
   display: grid;
   grid-template-columns: 1fr 7fr;
   grid-template-rows: 200px 1fr;

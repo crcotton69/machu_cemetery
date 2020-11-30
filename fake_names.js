@@ -31,7 +31,7 @@ function getAFakeDate(start_year, max_year) {
 
 function getAFake() {
     var n = Math.floor(Math.random() * names.length);
-    var p = {'name':names[n]};
+    var p = {'fname':names[n]};
     var birth = getAFakeDate(1850, 2000);
     var death = getAFakeDate(birth.getFullYear(), 2019);
 
@@ -41,7 +41,7 @@ function getAFake() {
 }
 
 /* This is just here to provide some dummy data */
-function populateNames() {
+function populateNames2() {
   baseCount = 100;
   rowCount = 10;   // number of rows from the gate to the pavillion
   groupCount = 10; // plot groups per row
@@ -60,14 +60,18 @@ function populateNames() {
       row.appendChild(group);
       for (p = 1; p <= plotCount; p++) {
         plot = document.createElement('div');
+
         if (p == 2) {
           plot.setAttribute("class", 'plot-left');
           plot.id = group.id + "P" + "L";
+
         } else {
           plot.setAttribute("class", 'plot-right');
           plot.id = group.id + "P" + "R";
         }
+
         label = document.createTextNode("");
+
         plot.appendChild(label);
         group.appendChild(plot);
         // console.log(plot.id);
@@ -83,10 +87,16 @@ function populateNames() {
           console.log("Problem with plot");
           break;
         }
+
         // This line determines what data is put on the plot. Right now it is configured for the second word in the name.
-        plot.innerHTML = plotinfo['name'].split(" ")[1]; //baseCount + ((groupCount * plotCount) * (r - 1) + (2 * (pg - 1) + (p - 1)));
+        if (plotinfo['lname']) {
+          plot.innerHTML = plotinfo['lname'];
+        } else {
+          plot.innerHTML = plotinfo['plotId'];
+          plot.setAttribute('class','plot-empty');
+        }
         plot.style.zindex = 50;
-        plot.onmouseover = function(){showId(this);};
+        plot.onmouseover = function(){ showDetails(this); };
       }
     }
   }

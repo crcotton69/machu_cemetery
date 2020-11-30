@@ -55,12 +55,12 @@
       </div>
       <div id="box3" class="box">
         <div class="nav">
-          <div onmouseover=""><a href="index.html" >Home</a></div>
-          <div onmouseover=""><a href="history.html" >History</a></div>
-          <div onmouseover=""><a href="gallery.html" >Gallery</a></div>
-          <div onmouseover=""><a href="contact_us.html" >Contact us</a></div>
-          <div onmouseover=""><a href="donations.html" >Donations</a></div>
-<div onmouseover=""><a href="profile.html" >Search</a></div>
+          <div><a class="text" href="index.html" >Home</a></div>
+          <div><a class="text" href="history.html" >History</a></div>
+          <div><a class="text" href="gallery.html" >Gallery</a></div>
+          <div><a class="text" href="contact_us.html" >Contact us</a></div>
+          <div><a class="text" href="donations.html" >Donations</a></div>
+<div><a class="text" href="profile.html" >Search</a></div>
         </div>
       </div>
       <div id="box4" class="box">

@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poiret+One&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
     <title>Machu Cemetery</title>
     <link rel="stylesheet" href="styles/main.style.css">
-    <link rel="stylesheet" href="styles/gallery.style.css">
+    <link rel="stylesheet" href="styles/profile.style.css">
     <style>
        .gallery {
 	  display: grid;
@@ -55,16 +55,28 @@
       </div>
       <div id="box3" class="box">
         <div class="nav">
-          <div onmouseover=""><a href="index.html" >Home</a></div>
-          <div onmouseover=""><a href="history.html" >History</a></div>
-          <div onmouseover=""><a href="gallery.html" >Gallery</a></div>
-          <div onmouseover=""><a href="contact_us.html" >Contact us</a></div>
-          <div onmouseover=""><a href="donations.html" >Donations</a></div>
+          <div><a class="text" href="index.html" >Home</a></div>
+          <div><a class="text" href="history.html" >History</a></div>
+          <div><a class="text" href="gallery.html" >Gallery</a></div>
+          <div><a class="text" href="contact_us.html" >Contact us</a></div>
+          <div><a class="text" href="donations.html" >Donations</a></div>
+<div><a class="text" href="profile.html" >Search</a></div>
         </div>
       </div>
       <div id="box4" class="box">
+        <div class="contents">
+        <div id="form-box">
+          <form id="lookup" method="GET" action="profile.php">
+            <input type="text" name="name" value="<?php if ($_GET['name']) {
+              echo $_GET['name'];
+            } else {
+              echo "Type Something Here";
+            }?>" onclick="if (this.value == 'Type Something Here') { this.setAttribute('value','');} else { console.log(this.value);}"/> <input type="submit" name="submit" value="Go"/>
+          </form>
+        </div>
+
         <div class="gallery">
-       	<?php 
+       	<?php
          //if( ($id_param = $_GET['name']."-".$_GET['location']) && ($row = $data[$id]) ) {
          if( ($id_param = $_GET['name']) ) {
 	   $pattern = "/".$id_param."/i";
@@ -74,12 +86,12 @@
 	  <div class="profile">
           <div class="dbox">
             <span id="full-name">Name: <?php echo $row[0]?></span><br/>
-            <span id="birth-date">Birthdate: <?php echo $row[1] ?></span> 
+            <span id="birth-date">Birthdate: <?php echo $row[1] ?></span>
             <span id="date-of-death">Date of Death: <?php echo $row[2] ?></span><br/>
             <span id="profile-location">Location: "<?php echo $row[3] ?>" </span>
             <p id="profile-description">Description: "<?php echo $row[4] ?>" </p>
           </div>
-	  <?php 
+	  <?php
 		$profile_pic_name = "images/profile_pics/".$row[0].".jpg";
 		if (file_exists($profile_pic_name)) {
 	  ?>
@@ -88,14 +100,15 @@
           </div>
 	  <?php } ?>
 	  </div>
-       	<?php 
+       	<?php
 	    }
 	  }
 	}
 	  unset($row);
-	?> 
+	?>
         </div>
       </div>
     </div>
+  </div>
   </body>
 </html>

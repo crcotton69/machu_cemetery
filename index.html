@@ -3,15 +3,21 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poiret+One&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Machu Cemetery</title>
+    <link rel="icon" href="" />
+
     <link rel="stylesheet" href="styles/main.style.css">
     <link rel="stylesheet" href="styles/plot.style.css">
-    <script type="text/javascript" src="fake_names.js"></script>
+    <script type="text/javascript" src="profileData.js"></script>
     <script type="text/javascript" src="navigation.js"></script>
   </head>
-  <body onload="hideDetails(); populateNames();">
-    <div id="details" class="note" onclick="hideDetails();" contextmenu="console.log('I am here!');">
+  <body onload="hideDetails(); populateNames();" >
+    <div id="details" class="note" onclick="hideDetails(this);" >
         I guess I need some information here;
+    </div>
+    <div id="search-results-window" class="search-results-window" onclick="clearAllResults(this); this.style.visibility='hidden';" >
     </div>
     <div class="page">
       <div id="box1" class="box">
@@ -26,11 +32,16 @@
       </div>
       <div id="box3" class="box">
         <div class="nav">
-          <div onmouseover=""><a href="index.html" >Home</a></div>
-          <div onmouseover=""><a href="history.html" >History</a></div>
-          <div onmouseover=""><a href="gallery.html" >Gallery</a></div>
-          <div onmouseover=""><a href="contact_us.html" >Contact us</a></div>
-          <div onmouseover=""><a href="donations.html" >Donations</a></div>
+          <div><a class="text" href="index.html" >Home</a></div>
+          <div><a class="text" href="history.html" >History</a></div>
+          <div><a class="text" href="gallery.html" >Gallery</a></div>
+          <div><a class="text" href="contact_us.html" >Contact us</a></div>
+          <div><a class="text" href="donations.html" >Donations</a></div>
+          <div class="search-widget">
+            <span class="text" >Search</span> <button onclick="var resultWindow = document.getElementById('search-results-window'); clearAllResults(resultWindow); resultWindow.style.visibility='hidden'; document.getElementById('search-box').value=''";>Clear</button><br/>
+            <input id="search-box" class="text" type="text" placeholder="Search a name" size="10" onkeyup="return refreshResults(this.value, document.getElementById('search-results-window'), createListNode);"/>
+          </div>
+          <div><a class="text" href="eventscalendar.html" >Events</a></div>
         </div>
         <!-- <img src="../images/0.jpg" />
         <img src="../images/1.jpg" /> -->

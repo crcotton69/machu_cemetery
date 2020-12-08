@@ -2,16 +2,25 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+		   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poiret+One&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
     <title>Machu Cemetery</title>
     <link rel="stylesheet" href="styles/main.style.css">
-    <!-- <script type="text/javascript" src="fake_names.js"></script> -->
-    <!-- <script type="text/javascript" src="navigation.js"></script> -->
-    <style>
-      * {
-          padding: 0;
-          margin: 0;
-	}
+    <link rel="stylesheet" href="styles/gallery.style.css">
+    <style media="screen">
+      .donation input {
+        font-size: 20px;
+        margin: 10px;
+        background-color: beige;
+      }
+      .donation textarea::placeholder {
+        font-size: 20px;
+      }
+      .donation textarea {
+        margin: 10px;
+        font-size: 20px;
+        background-color: beige;
+      }
     </style>
   </head>
   <body>
@@ -33,18 +42,30 @@
           <div><a class="text" href="gallery.html" >Gallery</a></div>
           <div><a class="text" href="contact_us.html" >Contact us</a></div>
           <div><a class="text" href="donations.html" >Donations</a></div>
-<div><a class="text" href="profile.html" >Search</a></div>
+					<div><a class="text" href="profile.html" >Search</a></div>
         </div>
       </div>
       <div id="box4" class="box" style="display:flex; flex-direction: column; min-height: 1vh; width: 100%; align-items: center; justify-contents: space-around;">
-	<div>
-      <form class="donation" action="index.html" method="post" >
-        <input type="text" name="fname" value="First Name">
-        <input type="text" name="lname" value="Last Name"><br/>
-        <input type="text" name="email" value="Email Address"><br/>
-        <input type="submit" name="SendIt" value="Submit">
-      </form>
-        </div>
+        <div class="content-description">
+          <p>Do you have feedback about the site, some interesting history to share?<br/>
+            Are you looking for someone on the site that you can't find?<br/>
+            Are you interested in volunteering to help out, or do you need help to schedule a funeral?<br/>
+          </p>
+<!--
+          <p>You can write to us at:<br/>
+            <strong>Machu Cemetery</strong><br/>
+            <strong>P.O. Box ... </strong><br/>
+            <strong>Granger, Texas 76563</strong><br/>
+          </p>
+          <p>Or you can use the form below to email us.</p>
+-->       <p><h1>Please, do not use this form.</h1></p>
+          <form class="donation" action="process_donation.php" method="post" >
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="lname" placeholder="Last Name"><br/>
+            <input type="text" name="email" placeholder="Email Address"><br/>
+            <textarea placeholder="Please let us know if you have any questions" name="messages" rows="10" cols="60"></textarea><br/>
+            <input type="submit" name="SendIt" value="Submit">
+          </form>
       </div>
     </div>
   </body>

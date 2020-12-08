@@ -1,14 +1,35 @@
-var plots = profileData; // Change the name of "d" to profileData.
+// var plots = [] //profileData; // Change the name of "d" to profileData.
+var profileData = [];
 
-function populateNames() {
+async function getProfileData() {
+  if (profileData) {
+
+    const response = await fetch("profileData.json");
+    const data = await response.json();
+    profileData = data;
+    // populateNames(); // I think the problem here is that if I just assign then data goes away. I need to do a deep copy.
+
+    console.log('Plots data loaded: ' + profileData);
+  } else {
+    console.log('Plots already has data: ' + profileData);
+  }
+}
+
+getProfileData();
+
+async function populateNames() {
+  await getProfileData();
+
   thePlots = document.getElementById("the-plots");
-
+  if (!thePlots) {
+    return;
+  }
   var plotId = null;
   var row = null;
   var col = null;
   var plt = null;
 
-  for (plotId in plots ) {
+  for (plotId in profileData ) {
     r = plotId.substring(0,plotId.indexOf('C'));
     c = plotId.substring(r.length, plotId.indexOf('P'));
     p = plotId.substring(r.length + c.length);
@@ -35,7 +56,7 @@ function populateNames() {
     plt = col.querySelector("#" + r + c + p);
 
     if ( !plt ) {
-      plotinfo = plots[plotId];
+      plotinfo = profileData[plotId];
       plt = document.createElement('div');
       plt.appendChild(document.createTextNode(""));
       plt.id = col.id + p;
@@ -45,35 +66,58 @@ function populateNames() {
   }
 }
 
+function getLocationElements(plotId) {
+  r = plotId.substring(0,plotId.indexOf('C'));
+  c = plotId.substring(r.length, plotId.indexOf('P'));
+  p = plotId.substring(r.length + c.length);
+  return { 'r': r, 'c': c, 'p': p };
+}
+
+function getLocationDescription(plotId) {
+  var parts = getLocationElements(plotId);
+  var retval = "Row: " + parts.r + " Group: " + parts.c;
+  // console.log(parts);
+
+  if (parts.p === 'PL') {
+    retval = retval + " Left";
+  } else if (parts.p === 'PR') {
+    retval = retval + " Right";
+  } else if (parts.p === 'PC') {
+    retval = retval + " Center";
+  }
+  return retval;
+}
+
 function configurePlot(plot, plotinfo) {
-  var p = plot.id.substring(plot.id.length -1);
+  var p = plot.id.substring(plot.id.length - 1);
   var fullname = getFullName(plotinfo);
 
   if ( !fullname ) {
     plot.innerHTML = plotinfo['plotId'];
-    plot.setAttribute('class','plot-empty');
+    plot.setAttribute('class','plot-label-empty');
   } else if (p == "L") {
-    plot.setAttribute("class", 'plot-left');
+    plot.setAttribute("class", 'plot-label-left');
   } else if (p == "R") {
-    plot.setAttribute("class", 'plot-right');
+    plot.setAttribute("class", 'plot-label-right');
   } else if (p == "C") {
-    plot.setAttribute("class", 'plot-empty');
+    plot.setAttribute("class", 'plot-label-center');
   }
 
   if (plotinfo['lname']) {
     plot.innerHTML = plotinfo['lname'];
   }
   plot.style.zindex = 50;
-  plot.onmouseover = function(){ showDetails(this); };
+  // plot.onmouseover = function(){ showDetails(this); };
+  plot.addEventListener('click', function() { showDetails(this); console.log("clicked" + this.id); });
 }
 
 
 /* The following are the functions to display the popup boxes. right now, they get the data from a js object called plots, which I should have in a json file */
 function getContents(plotID) {
   var p=null;
-  if (plotID in plots) {
+  if (plotID in profileData) {
     // console.log(plotID + ' was found');
-    p = plots[plotID];
+    p = profileData[plotID];
   }
   if (p != null)
     p['plotId'] = plotID;
@@ -130,16 +174,16 @@ function showDetails(element) {
 
     var detailsBoundary = details.getBoundingClientRect();
     var plotBoundary = element.getBoundingClientRect();
-    var d = getWindowDimensions();
+    var wd = getWindowDimensions();
 
 /* Set the appropriate postion of the details information box */
-    if (plotBoundary.top + 2 * plotBoundary.height > d.height) {
+    if (plotBoundary.top + detailsBoundary.height > wd.height) {
       details.style.top = (  plotBoundary.top - detailsBoundary.height + 20) + "px";
     } else {
       details.style.top = (  plotBoundary.top + 10) + "px";
     }
 
-    if (plotBoundary.left + 2 *plotBoundary.width > d.width) {
+    if (plotBoundary.left + detailsBoundary.width > wd.width) {
       details.style.left = (plotBoundary.left - detailsBoundary.width + 20) + "px";
     } else {
       details.style.left = ( plotBoundary.left + 10) + "px";
@@ -151,6 +195,7 @@ function showDetails(element) {
   else {
     s = 0;
     hideDetails();
+    console.log("Just curious if I ever get here?");
   }
 }
 
@@ -205,12 +250,11 @@ function refreshResults(name, container, nodeFactory) {
 
 function createListNode(p) {
   var np = document.createElement('p');
-  var message=getFullName(p) + " Location: " + p['plotId'];
+  var message=getFullName(p) + " Location: " + getLocationDescription(p['plotId']);
   var text = document.createTextNode(message);
   np.addEventListener('click', event => {
     console.log("cow");
   });
-  // .onclick = function() { x = document.getElementById(p['plotId']); console.log('found ' + x); }
   np.appendChild(text);
   np.setAttribute('class', 'search-result');
   return np;

@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: "Garamond" sans-serif;
+  background: beige;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+#breedwindow {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: darkgray;
+}
+
+div.dogpic {
+  flex: 1;
+  width: 300px;
+  height: auto;
+  margin: 20px;
+  background-color: beige;
+  padding: 30px;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+}
+
+img.dogpic {
+  max-width: 300px;
+
+}

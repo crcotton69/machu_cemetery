@@ -2,9 +2,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poiret+One&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+		   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poiret+One&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
     <title>Machu Cemetery</title>
     <link rel="stylesheet" href="styles/main.style.css">
+    <link rel="stylesheet" href="styles/gallery.style.css">
+    <style media="screen">
+      .donation input {
+        font-size: 20px;
+        margin: 10px;
+      }
+      .donation textarea::placeholder {
+        font-size: 20px;
+      }
+      .donation textarea {
+        margin: 10px;
+        font-size: 20px;
+      }
+    </style>
   </head>
   <body>
     <div class="page">
@@ -25,21 +40,32 @@
           <div><a class="text" href="gallery.html" >Gallery</a></div>
           <div><a class="text" href="contact_us.html" >Contact us</a></div>
           <div><a class="text" href="donations.html" >Donations</a></div>
+          <div><a class="text" href="eventscalendar.html" >Events</a></div>
           <div><a class="text" href="profile.html" >Search</a></div>
         </div>
-        <!-- <img src="../images/0.jpg" />
-        <img src="../images/1.jpg" /> -->
       </div>
       <div id="box4" class="box" style="display:flex; flex-direction: column; min-height: 1vh; width: 100%; align-items: center; justify-contents: space-around;">
-	<div>
-      <form class="donation" action="index.html" method="post" >
-        <input type="text" name="fname" value="First Name">
-        <input type="text" name="lname" value="Last Name"><br/>
-        <input type="text" name="email" value="Email Address"><br/>
-        <input type="submit" name="SendIt" value="Submit">
-      </form>
+        <div class="content-description">
+          <div class="gallery">
+            <p>Scrolling gallery of images of broken grave markers and people mowing etc.</p>
+          </div>
+          <p>We really need your help to maintain the headstones and landscaping.</p>
+          <!--
+          <p>Address to which one can send a check. Payable to Machu Cemetery Fund:<br/>
+            <strong>Machu Cemetery</strong><br/>
+            <strong>P.O. Box ... </strong><br/>
+            <strong>Granger, Texas 76563</strong><br/>
+          </p>
+        -->
+          <h1>THIS IS NOT ENABLED ... Please do not use!</h1>
+          <form class="donation" action="process_donation.php" method="post" >
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="lname" placeholder="Last Name"><br/>
+            <input type="text" name="email" placeholder="Email Address"><br/>
+            <textarea placeholder="Please let us know if you have any questions" name="messages" rows="10" cols="60"></textarea><br/>
+            <input type="submit" name="SendIt" value="Submit">
+          </form>
         </div>
-	<div><button style="font-size: 300px; border-radius: 20px;">Paypal</button></div>
       </div>
     </div>
   </body>

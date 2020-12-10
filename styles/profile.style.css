@@ -59,3 +59,13 @@
  .dbox label {
    color: orange;
  }
+
+ @media screen and (max-width: 600px) {
+   #form-box input {
+     font-size: 1em;
+   }
+   #form-box button {
+     font-size: 20px;
+   }
+
+ }

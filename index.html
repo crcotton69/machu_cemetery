@@ -3,22 +3,20 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poiret+One&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Machu Cemetery</title>
-    <link rel="icon" href="" />
+    <link rel="icon" href="machu_ico_size.ico" />
 
     <link rel="stylesheet" href="styles/main.style.css">
     <link rel="stylesheet" href="styles/plot.style.css">
-    <script type="text/javascript" src="profileData.js"></script>
     <script type="text/javascript" src="navigation.js"></script>
   </head>
-  <body onload="hideDetails(); populateNames();" >
-    <div id="details" class="note" onclick="hideDetails(this);" >
-        I guess I need some information here;
-    </div>
+  <body onload="populateNames();" > <!-- "hideDetails(); -->
     <div id="search-results-window" class="search-results-window" onclick="clearAllResults(this); this.style.visibility='hidden';" >
     </div>
+
     <div class="page">
       <div id="box1" class="box">
         <center>
@@ -37,17 +35,17 @@
           <div><a class="text" href="gallery.html" >Gallery</a></div>
           <div><a class="text" href="contact_us.html" >Contact us</a></div>
           <div><a class="text" href="donations.html" >Donations</a></div>
-          <div class="search-widget">
-            <span class="text" >Search</span> <button onclick="var resultWindow = document.getElementById('search-results-window'); clearAllResults(resultWindow); resultWindow.style.visibility='hidden'; document.getElementById('search-box').value=''";>Clear</button><br/>
-            <input id="search-box" class="text" type="text" placeholder="Search a name" size="10" onkeyup="return refreshResults(this.value, document.getElementById('search-results-window'), createListNode);"/>
-          </div>
           <div><a class="text" href="eventscalendar.html" >Events</a></div>
+          <div class="search-widget">
+              <input id="search-input" class="text" type="text" placeholder="Search" size="15" onkeyup="return refreshResults(this.value, document.getElementById('search-results-window'), createListNode);"/>
+              <button id="clear-button" onclick="var resultWindow = document.getElementById('search-results-window'); clearAllResults(resultWindow); resultWindow.style.visibility='hidden'; document.getElementById('search-input').value=''";>Clear</button>
+          </div>
         </div>
-        <!-- <img src="../images/0.jpg" />
-        <img src="../images/1.jpg" /> -->
       </div>
-      <div id="box4" class="box" onclick="hideDetails();">
+      <div id="box4" class="box">
 				<div class="contents">
+          <div id="details" class="note" onclick="hideDetails(this);"></div>
+
           <!-- Information box at the top -->
           <div class="description">
             <p>Located east of Granger Texas and just south of FM 971, the Machu Cemetery provides a beautiful setting for its current and future residents.</p>
@@ -60,18 +58,21 @@
           <!-- Depiction of county road 348 and the Gate -->
           <div id="road">
             <span id="CR348_Name">County Rd. 348 - Western border of the cemetery.</span>
-            <div id="gate">Gate</div>
           </div>
 
           <!-- Lay out of the plots -->
           <div class="yard">
             <div id="the-plots"></div>
-            <div id="the-drive"></div>
-            <div id="pavillion-area">
-              <div id="pavillion">
-                <h1>Pavillion</h1>
+            <div id="the-drive">
+              <div id="gate">Gate</div>
+            </div>
+
+            <div id="pavilion-area">
+              <div id="pavilion">
+                <span>Pavilion</span>
               </div>
             </div>
+
           </div>
         </div>
       </div>

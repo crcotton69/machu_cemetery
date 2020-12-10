@@ -1,0 +1,6 @@
+#Image files
+*.jpg
+*.png
+*.giv
+*.ico
+images/gallery/*.jpg

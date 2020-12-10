@@ -1,7 +1,7 @@
 div.search-results-window p {
   border: 1px solid rgb(64,32,0);
 
-  color: white;
+  color: beige;
   font-size: 1em;
   font-weight: bold;
 
@@ -17,34 +17,40 @@ div.search-results-window p {
 
 div.search-results-window {
 
+  background-color: #203200;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   position: absolute;
-  left: 25%;
+  left: 20%;
   top: 25vh;
-  min-width: 50%;
+  min-width: 40%;
   min-height: 50%;
   z-index: 100;
 
-  background-color: beige;
   visibility: hidden;
 
   border-radius: 5px;
   border: 2px solid; black;
+
+  resize: both;
+  overflow: auto;
 }
 
 div.note {
   visibility: hidden;
 
+  background-color: #203200;
+
   position: fixed;
-  background-color: rgb(64,32,0,1);
+  overflow: visible;
   top: 0;
   left: 0;
   width: auto;
-  max-width: 200px;
+  max-width: 50%;
   height: auto;
   padding: 10px;
 
@@ -74,6 +80,7 @@ div.note p {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  overflow: hidden;
 
 }
 
@@ -105,7 +112,6 @@ div.note p {
   top: 25%;
 }
 
-
 .yard {
   display: grid;
   width: 100%;
@@ -128,12 +134,9 @@ div.note p {
 }
 
 #the-plots {
-  /* background: #003200; */
   background: #203200;
   color: black;
-
-  /* width: 100%; */
-  height: 100vh;
+  /* height: 100vh; */
 
   display: flex;
   flex-direction: column;
@@ -150,8 +153,6 @@ div.note p {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-evenly;
-
-  margin-bottom: 10px;
 }
 
 .plot-group {
@@ -165,8 +166,6 @@ div.note p {
 
   border-radius: 5px;
   border: 1px solid black;
-
-  min-height: 4em;
 
   font-family: sans-serif;
   font-size: medium;
@@ -231,19 +230,21 @@ div.note p {
   margin-left: 4px;
 }
 
-#pavillion-area {
+#pavilion-area {
   background-color: #203200;
-  height: 20vh;
-  /* width: 80vw; */
+  overflow-y: hidden;
 }
 
-#pavillion {
+#pavilion {
   position: relative;
   background-color: beige;
-  width: 10em;
-  height: 4em;
+  width: 30%;
+  height: 50%;
+  top: 25%;
   left: 5vw;
   text-align: center;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 1200px) {
@@ -251,7 +252,7 @@ div.note p {
     width: 80fr;
   }
 
-  #pavillion-area {
+  #pavilion-area {
     width: 80fr;
   }
 
@@ -314,14 +315,15 @@ div.note p {
     width: 100%;
   }
 
-  #pavillion-area {
+  #pavilion-area {
     width: 100%;
-    height: 20vh;
+    /* height: 20vh; */
   }
 
-  #pavillion {
+  #pavilion {
     height: 30%;
-    font-size: small;
+    font-size: 1em;
+    font-weight: bold;
   }
 
   div.search-results-window p {

@@ -25,6 +25,10 @@ div.content-description p {
   color: white;
 }
 
+span.lookup-text {
+  color: darkorange;
+  font-weight: bold;
+}
 p.citation {
   font-size: small;
   font-style: italic;
@@ -292,6 +296,11 @@ img.machu-logo {
 
   .nav {
     justify-content: space-around;
+  }
+
+  div.content-description {
+    margin: 0;
+    padding: 0;
   }
   /* make the nav disappear and a completely separate nav icon show up which when clicked exposes a tall narrow nav*/
 }

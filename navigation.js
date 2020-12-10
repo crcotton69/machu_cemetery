@@ -107,8 +107,7 @@ function configurePlot(plot, plotinfo) {
     plot.innerHTML = plotinfo['lname'];
   }
   plot.style.zindex = 50;
-  // plot.onmouseover = function(){ showDetails(this); };
-  plot.addEventListener('click', function() { showDetails(this); console.log("clicked" + this.id); });
+  plot.addEventListener('click', function() { showDetails(this.id, this); });
 }
 
 
@@ -155,10 +154,10 @@ function getFullName(pd) {
   return ret;
 }
 
-function showDetails(element) {
+function showDetails(id, element=null) {
   var s;
   if(!s) {
-    s=element.id;
+    s=id;
     var p = getContents(s);
 
     var details = document.getElementById("details");
@@ -166,28 +165,35 @@ function showDetails(element) {
     var name = getFullName(p);
 
     if (name.trim().length > 0) {
-      var message="Full Name: " + name + "<br/>Birth: "+ p['birth'] + "<br/>Death: " + p['death'] + "<br/><p> " + p['description'] + "</p>";
+      var message="Full Name: <span class=\"lookup-text\">" + name + "</span><br/>Birth: <span class=\"lookup-text\">"+ p['birth'] + "</span><br/>Death: <span class=\"lookup-text\">" + p['death'] + "</span><br/><br/><p class=\"description\" style=\"margin:0; padding: 2px;\"> " + p['description'] + "</p>";
       details.innerHTML = message;
     } else {
-      details.innerHTML = "This plot is unclaimed but heres a Czech proverb:<p>"+p['description']+"</p>";
+      details.innerHTML = "Plot <span class=\"lookup-text\">" + s + "</span> is unclaimed but here's what we know:<p>"+p['description']+"</p>";
     }
 
     var detailsBoundary = details.getBoundingClientRect();
-    var plotBoundary = element.getBoundingClientRect();
+    var plotBoundary = {}; //= element.getBoundingClientRect();
+    var ev = null;
+    if (ev == null) { ev = window.event }
+    plotBoundary['left'] = ev.clientX;
+    plotBoundary['top'] = ev.clientY;
     var wd = getWindowDimensions();
 
 /* Set the appropriate postion of the details information box */
-    if (plotBoundary.top + detailsBoundary.height > wd.height) {
-      details.style.top = (  plotBoundary.top - detailsBoundary.height + 20) + "px";
-    } else {
-      details.style.top = (  plotBoundary.top + 10) + "px";
-    }
+    // if (plotBoundary.top + detailsBoundary.height > wd.height) {
+    //   details.style.top = (  plotBoundary.top - detailsBoundary.height + 20) + "px";
+    // } else {
+    //   details.style.top = (  plotBoundary.top + 10) + "px";
+    // }
+    //
+    // if (plotBoundary.left + detailsBoundary.width > wd.width) {
+    //   details.style.left = (plotBoundary.left - detailsBoundary.width + 20) + "px";
+    // } else {
+    //   details.style.left = ( plotBoundary.left + 10) + "px";
+    // }
+    details.style.top = "25%";
+    details.style.left = "25%";
 
-    if (plotBoundary.left + detailsBoundary.width > wd.width) {
-      details.style.left = (plotBoundary.left - detailsBoundary.width + 20) + "px";
-    } else {
-      details.style.left = ( plotBoundary.left + 10) + "px";
-    }
     details.style.zIndex=100;
     details.style.visibility = 'visible';
     s = 0;
@@ -202,6 +208,8 @@ function showDetails(element) {
 function hideDetails() {
   var details = document.getElementById("details");
   details.style.visibility = 'hidden';
+  details.style.top = 0;
+  details.style.left = 0;
 }
 
 function clearAllResults(target) {
@@ -250,10 +258,11 @@ function refreshResults(name, container, nodeFactory) {
 
 function createListNode(p) {
   var np = document.createElement('p');
-  var message=getFullName(p) + " Location: " + getLocationDescription(p['plotId']);
+  var message=getFullName(p) + " " + getLocationDescription(p['plotId']);
   var text = document.createTextNode(message);
   np.addEventListener('click', event => {
-    console.log("cow");
+    loc = document.getElementById(p['plotId']);
+    showDetails(p['plotId'],loc);
   });
   np.appendChild(text);
   np.setAttribute('class', 'search-result');

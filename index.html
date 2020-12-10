@@ -14,10 +14,9 @@
     <script type="text/javascript" src="navigation.js"></script>
   </head>
   <body onload="populateNames();" > <!-- "hideDetails(); -->
-    <div id="details" class="note" onclick="hideDetails(this);">
-    </div>
     <div id="search-results-window" class="search-results-window" onclick="clearAllResults(this); this.style.visibility='hidden';" >
     </div>
+
     <div class="page">
       <div id="box1" class="box">
         <center>
@@ -45,6 +44,8 @@
       </div>
       <div id="box4" class="box">
 				<div class="contents">
+          <div id="details" class="note" onclick="hideDetails(this);"></div>
+
           <!-- Information box at the top -->
           <div class="description">
             <p>Located east of Granger Texas and just south of FM 971, the Machu Cemetery provides a beautiful setting for its current and future residents.</p>
@@ -66,9 +67,9 @@
               <div id="gate">Gate</div>
             </div>
 
-            <div id="pavillion-area">
-              <div id="pavillion">
-                <h1>Pavillion</h1>
+            <div id="pavilion-area">
+              <div id="pavilion">
+                <span>Pavilion</span>
               </div>
             </div>
 
